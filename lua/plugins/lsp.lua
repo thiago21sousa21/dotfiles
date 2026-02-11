@@ -3,7 +3,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     -- As opções (opts) que você achou na documentação
     opts = {
-      ensure_installed = { "lua_ls", "ts_ls", "pyright", "rust_analyzer" }, -- Garante que os servidores de Lua, JS e Python estejam lá
+      ensure_installed = { "lua_ls", "ts_ls", "pyright", "rust_analyzer", "jdtls" }, -- Garante que os servidores de Lua, JS e Python estejam lá
       automatic_enable = true, -- Ativa automaticamente conforme você pesquisou
     },
     dependencies = {
@@ -24,6 +24,7 @@ return {
         vim.lsp.enable('pyright', { capabilities = capabilities })
         vim.lsp.enable('ts_ls', { capabilities = capabilities })
         vim.lsp.enable('rust_analyzer', { capabilities = capabilities })
+        vim.lsp.enable('jdtls', {capabilities = capabilities})
 
       -- Seus atalhos de teclado continuam iguais
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Ver documentação" })
