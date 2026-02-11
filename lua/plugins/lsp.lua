@@ -16,13 +16,14 @@ return {
       -- Iniciamos o Mason normalmente
       require("mason").setup()
       require("mason-lspconfig").setup(opts)
+        -- Dentro do seu config no lsp.lua
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      -- No Neovim 0.11+, usamos vim.lsp.enable para ativar os servidores
-      -- Isso substitui o antigo lspconfig.servidor.setup({})
-      vim.lsp.enable('lua_ls')
-      vim.lsp.enable('pyright')
-      vim.lsp.enable('ts_ls')
-      vim.lsp.enable('rust_analyzer')
+        -- Agora passamos as capacidades para o Neovim saber que pode autocompletar
+        vim.lsp.enable('lua_ls', { capabilities = capabilities })
+        vim.lsp.enable('pyright', { capabilities = capabilities })
+        vim.lsp.enable('ts_ls', { capabilities = capabilities })
+        vim.lsp.enable('rust_analyzer', { capabilities = capabilities })
 
       -- Seus atalhos de teclado continuam iguais
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Ver documentação" })
